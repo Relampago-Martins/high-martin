@@ -1,0 +1,33 @@
+version: '2.1'
+
+volumes:
+  nginx-data:
+  nginx-logs:
+
+services:
+  nginx:
+    build: ./nginx
+    container_name: container-nginx
+    ports:
+      - 80:80
+    restart: always
+    networks:
+      - default
+
+  api:
+    build: ./api
+    container_name: container-api
+    networks: 
+      - default
+
+  api2:
+    build: ./api
+    container_name: container-api2
+    networks: 
+      - default
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
+

@@ -1,0 +1,19 @@
+name: high-martin
+type: sw.application
+
+joinable: false
+description:
+  Projeto principal de todas as aplicacoes do High Martin
+
+assets:
+  repository:
+    type: blob.asset
+    data:
+      url: 'https://github.com/Relampago-Martins/high-martin/'
+  logo:
+    type: blob.asset
+    data:
+      url: 'https://avatars.githubusercontent.com/u/108153115?s=48&v=4'
+
+
+version: 2.0.4
