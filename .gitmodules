@@ -1,0 +1,3 @@
+[submodule "moedas"]
+	path = moedas
+	url = https://github.com/Relampago-Martins/moedas.git
