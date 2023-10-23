@@ -20,9 +20,12 @@ services:
     networks: 
       - default
 
-  api2:
-    build: ./api
-    container_name: container-api2
+  db:
+    build: ./db
+    container_name: container-db
+    restart: unless-stopped
+    volumes:
+      - ./db/data:/var/lib/postgresql/data
     networks: 
       - default
 

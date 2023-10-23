@@ -21,3 +21,4 @@
 .ionide
 
 moedas/frontend/*
+db/data
