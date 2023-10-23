@@ -1,7 +1,7 @@
 # base-image for python on any machine using a template variable,
 # see more about dockerfile templates here: https://www.balena.io/docs/learn/develop/dockerfile/
-# FROM python:3.7-slim-stretch
-FROM balenalib/raspberrypi4-64-python:3.8-bookworm-build
+FROM python:3.7-slim-stretch
+# FROM balenalib/raspberrypi4-64-python:3.8-bookworm-build
 
 
 # use `install_packages` if you need to install dependencies,
