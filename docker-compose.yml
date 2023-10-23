@@ -1,4 +1,4 @@
-version: '2.1'
+version: '2.2'
 
 volumes:
   nginx-data:
@@ -8,29 +8,36 @@ services:
   nginx:
     build: ./nginx
     container_name: container-nginx
+    networks:
+      - default
     ports:
       - 80:80
     restart: always
-    networks:
-      - default
 
   api:
     build: ./api
     container_name: container-api
+    environment:
+      - DB_SERVER=db
     networks: 
       - default
 
   db:
     build: ./db
     container_name: container-db
+    networks: 
+      - default
     restart: unless-stopped
     volumes:
       - ./db/data:/var/lib/postgresql/data
-    networks: 
-      - default
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - 5432:5432
 
 networks:
   default:
-    external:
-      name: nginx-proxy
+    name: network-nginx
+    external: true
 

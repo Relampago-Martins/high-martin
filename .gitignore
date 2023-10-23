@@ -42,3 +42,4 @@
 
 nginx-logs
 db/data
+.env
