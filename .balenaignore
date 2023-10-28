@@ -23,3 +23,4 @@
 moedas/frontend/*
 db/data
 .env
+.venv

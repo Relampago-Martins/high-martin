@@ -43,3 +43,4 @@
 nginx-logs
 db/data
 .env
+.venv
