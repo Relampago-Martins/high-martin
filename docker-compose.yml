@@ -3,7 +3,7 @@ version: '2.2'
 volumes:
   nginx-data:
   nginx-logs: 
-  postgres-data:
+  resin-data:
 
 services:
   nginx:
@@ -30,7 +30,7 @@ services:
       - default
     restart: always
     volumes:
-      - 'postgres-data:/var/lib/postgresql'
+      - 'resin-data:/var/lib/postgresql/data'
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
