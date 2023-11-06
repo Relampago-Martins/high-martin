@@ -3,12 +3,7 @@ version: '2.2'
 volumes:
   nginx-data:
   nginx-logs: 
-  resin-data:
-  pgadmin-data:
-    driver_opts:
-      type: none
-      device: ${PWD}/pgadmin/data
-      o: bind
+  resin-data2:
 
 services:
   nginx:
@@ -31,8 +26,6 @@ services:
       - db
     environment:
       - DB_HOST=db
-    volumes:
-      - 'resin-data:/var/app/static'
     command: ["python3", "manage.py", "runserver", "0.0.0.0:80"]
 
   db:
@@ -42,7 +35,7 @@ services:
       - default
     restart: always
     volumes:
-      - 'resin-data:/var/lib/postgresql/data'
+      - 'resin-data2:/var/lib/postgresql/data'
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -60,8 +53,6 @@ services:
       - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
       - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
       - PGADMIN_LISTEN_PORT=5050
-    volumes:
-      - 'pgadmin-data:/var/lib/pgadmin'
     ports:
       - "5050:5050"
     depends_on:
