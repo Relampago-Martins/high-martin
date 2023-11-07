@@ -1,10 +1,5 @@
 version: '2.2'
 
-volumes:
-  nginx-data:
-  nginx-logs: 
-  resin-data2:
-
 services:
   nginx:
     build: ./nginx
@@ -26,7 +21,7 @@ services:
       - db
     environment:
       - DB_HOST=db
-    command: ["python3", "manage.py", "runserver", "0.0.0.0:80"]
+    command: /bin/sh -c "/var/app/run.sh"
 
   db:
     image: postgres:alpine3.18
@@ -55,6 +50,8 @@ services:
       - PGADMIN_LISTEN_PORT=5050
     ports:
       - "5050:5050"
+    volumes:
+      - 'high-martin_pgadmin-data:/var/lib/pgadmin'
     depends_on:
       - db
 
@@ -62,3 +59,9 @@ networks:
   default:
     external:
       name: network-nginx
+
+volumes:
+  nginx-data:
+  nginx-logs: 
+  resin-data2:
+  high-martin_pgadmin-data:
