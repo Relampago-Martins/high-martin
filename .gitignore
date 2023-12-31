@@ -44,3 +44,4 @@ nginx-logs
 db/data
 .env
 .venv
+pgadmin/data/*

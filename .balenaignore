@@ -24,3 +24,5 @@ moedas/frontend/*
 db/*
 .env
 .venv
+
+pgadmin/data/

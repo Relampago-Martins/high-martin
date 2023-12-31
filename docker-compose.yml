@@ -1,10 +1,5 @@
 version: '2.2'
 
-volumes:
-  nginx-data:
-  nginx-logs: 
-  resin-data:
-
 services:
   nginx:
     build: ./nginx
@@ -22,6 +17,11 @@ services:
       - default
     ports:
       - 8001:8001
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+    command: /bin/sh -c "/var/app/run.sh"
 
   db:
     image: postgres:alpine3.18
@@ -30,15 +30,38 @@ services:
       - default
     restart: always
     volumes:
-      - 'resin-data:/var/lib/postgresql/data'
+      - 'resin-data2:/var/lib/postgresql/data'
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=postgres
     ports:
-      - "5432" 
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4:7.8
+    container_name: container-pgadmin
+    networks: 
+      - default
+    restart: always
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+      - PGADMIN_LISTEN_PORT=5050
+    ports:
+      - "5050:5050"
+    volumes:
+      - 'high-martin_pgadmin-data:/var/lib/pgadmin'
+    depends_on:
+      - db
 
 networks:
   default:
     external:
       name: network-nginx
+
+volumes:
+  nginx-data:
+  nginx-logs: 
+  resin-data2:
+  high-martin_pgadmin-data:
