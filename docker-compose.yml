@@ -23,6 +23,19 @@ services:
       - DB_HOST=db
     command: /bin/sh -c "/var/app/run.sh"
 
+  streamberry:
+    build: ./StreamBerry/python
+    container_name: container-streamberry
+    networks: 
+      - default
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+    command: /bin/sh -c "/var/app/run.sh"
+
   db:
     image: postgres:alpine3.18
     container_name: container-db
