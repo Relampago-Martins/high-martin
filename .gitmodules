@@ -1,3 +1,6 @@
 [submodule "moedas"]
 	path = moedas
 	url = https://github.com/Relampago-Martins/moedas.git
+[submodule "StreamBerry"]
+	path = StreamBerry
+	url = https://github.com/Relampago-Martins/StreamBerry.git
