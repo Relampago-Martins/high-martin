@@ -16,7 +16,7 @@ services:
     networks: 
       - default
     ports:
-      - 8001:8001
+      - 8001:80
     depends_on:
       - db
     environment:
@@ -29,7 +29,7 @@ services:
     networks: 
       - default
     ports:
-      - 8000:8000
+      - 8000:80
     depends_on:
       - db
     environment:
@@ -37,7 +37,8 @@ services:
     command: /bin/sh -c "/var/app/run.sh"
 
   db:
-    image: postgres:alpine3.18
+    image: arm64v8/postgres:alpine
+    # image: postgres:alpine3.18
     container_name: container-db
     networks: 
       - default
