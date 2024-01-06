@@ -26,3 +26,5 @@ db/*
 .venv
 
 pgadmin/data/
+staticfiles/
+db.sqlite3
