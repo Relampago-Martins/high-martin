@@ -1,6 +1,6 @@
 [submodule "moedas"]
 	path = moedas
 	url = https://github.com/Relampago-Martins/moedas.git
-[submodule "StreamBerry"]
-	path = StreamBerry
-	url = https://github.com/Relampago-Martins/StreamBerry.git
+[submodule "projac_backend"]
+	path = projac_backend
+	url = https://github.com/Projetos-Faculdade-UCS/projac_backend.git
