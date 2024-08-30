@@ -24,9 +24,11 @@ services:
       - DEBUG=${DEBUG}
     command: /bin/sh -c "/var/app/run.sh"
 
-  streamberry:
-    build: ./StreamBerry/python
-    container_name: container-streamberry
+  projac-api:
+    build:
+      context: ./projac_backend
+      dockerfile: Dockerfile.prod
+    container_name: container-projac
     networks: 
       - default
     ports:
@@ -36,7 +38,7 @@ services:
     environment:
       - DB_HOST=db
       - DEBUG=${DEBUG}
-    command: /bin/sh -c "/var/app/run.sh"
+    command: /bin/sh -c "/app/entrypoint.sh"
 
   db:
     # image: arm64v8/postgres:alpine
