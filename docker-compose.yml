@@ -41,7 +41,7 @@ services:
     command: /bin/sh -c "/app/entrypoint.sh"
 
   db:
-    image: arm64v8/postgres:alpine
+    image: arm64v8/postgres:16.2-alpine3.18
     # image: postgres:alpine3.18
     container_name: container-db
     networks: 
